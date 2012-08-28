@@ -4,7 +4,7 @@
   <title><![CDATA[Category: personal | Bottico]]></title>
   <link href="http://Bottico.github.com/blog/categories/personal/atom.xml" rel="self"/>
   <link href="http://Bottico.github.com/"/>
-  <updated>2012-08-28T10:44:16-05:00</updated>
+  <updated>2012-08-28T11:05:47-05:00</updated>
   <id>http://Bottico.github.com/</id>
   <author>
     <name><![CDATA[Angel Celis Botto]]></name>
@@ -14,13 +14,11 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Probando]]></title>
+    <title type="html"><![CDATA[Hola mundo]]></title>
     <link href="http://Bottico.github.com/blog/2012/08/27/title/"/>
     <updated>2012-08-27T17:16:00-05:00</updated>
     <id>http://Bottico.github.com/blog/2012/08/27/title</id>
-    <content type="html"><![CDATA[<h2>hola</h2>
-
-<p><strong>Haciendo</strong> pruebas sobre el sitio para un diseño optimo</p>
+    <content type="html"><![CDATA[
 ]]></content>
   </entry>
   
