@@ -4,11 +4,11 @@
   <title><![CDATA[Bottico]]></title>
   <link href="http://blog.botti.co/atom.xml" rel="self"/>
   <link href="http://blog.botti.co/"/>
-  <updated>2012-09-01T00:46:40-05:00</updated>
+  <updated>2012-09-01T00:54:26-05:00</updated>
   <id>http://blog.botti.co/</id>
   <author>
     <name><![CDATA[Angel Celis Botto]]></name>
-    
+    <email><![CDATA[angelbotto@gmail.com]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
