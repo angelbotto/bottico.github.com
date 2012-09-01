@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: perfomance | Bottico]]></title>
-  <link href="http://blog.botti.co/categories/perfomance/atom.xml" rel="self"/>
+  <title><![CDATA[Category: javascript | Bottico]]></title>
+  <link href="http://blog.botti.co/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://blog.botti.co/"/>
-  <updated>2012-08-30T15:11:47-05:00</updated>
+  <updated>2012-09-01T00:46:40-05:00</updated>
   <id>http://blog.botti.co/</id>
   <author>
     <name><![CDATA[Angel Celis Botto]]></name>
