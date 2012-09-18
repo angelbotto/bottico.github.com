@@ -17,18 +17,18 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>JavaScript blocks rendering - Bottico</title>
+  <title>Jugando con Sinatra - Bottico</title>
   <meta name="author" content="Angel Celis Botto">
   
-  <meta name="description" content="JavaScript Blocks Rendering Aug 30th, 2012 | Comentarios Hace ya tiempo en el primer meetup de Bogodev, @torrenegra hablo sobre tendencias en nueva &hellip;">
-  <meta name="keywords" content="javascript perfomance bottico rendimiento tiempo carga">
+  <meta name="description" content="Jugando Con Sinatra Sep 17th, 2012 | Comentarios Sinatra Sinatra es un framework (DSL) de desarrollo para aplicaciones web escrito en Ruby. que usa &hellip;">
+  <meta name="keywords" content="ruby sinatra angelbotto bottico botti.co">
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="google-site-verification" content="aWsVi9MPQPfLZUKYOLIdnlVX9kMAnow13p6KpgktOqs" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="cache-control" content="no-cache">
   
-  <link rel="canonical" href="http://botti.co/blog/perfomance/">
+  <link rel="canonical" href="http://botti.co/blog/conociendo-sinatra/">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/Bottico" rel="alternate" title="Bottico" type="application/atom+xml">
@@ -77,7 +77,7 @@
   
   <header>
     
-      <h1 class="entry-title" itemprop="name">JavaScript Blocks Rendering</h1>
+      <h1 class="entry-title" itemprop="name">Jugando Con Sinatra</h1>
     
     
       <p class="meta">
@@ -93,7 +93,7 @@
   
 
 
-<time datetime="2012-08-30T13:41:00-05:00" pubdate data-updated="true" itempropr="datePublished">Aug 30<span>th</span>, 2012</time>
+<time datetime="2012-09-17T16:33:00-05:00" pubdate data-updated="true" itempropr="datePublished">Sep 17<span>th</span>, 2012</time>
         
          | <a href="#disqus_thread">Comentarios</a>
         
@@ -102,95 +102,89 @@
   </header>
 
 
-<div class="entry-content" itemprop="articleBody"><p>Hace ya tiempo en el primer meetup de <a href="http://www.bogodev.org/">Bogodev</a>, <a href="http://twitter.com/torrenegra">@torrenegra</a> hablo sobre tendencias en nueva york, y como la <strong>velocidad</strong> de carga de una pagina hablaba bien de ella.</p>
+<div class="entry-content" itemprop="articleBody"><h2>Sinatra</h2>
 
-<p>La idea de hoy es compartir una pequeña guia de como dar solucion a un problema frecuente a la hora de cargar archivos js :D</p>
+<p><a href="http://sinatrarb.com">Sinatra</a> es un framework <strong>(DSL)</strong> de desarrollo para aplicaciones web escrito en <strong>Ruby</strong>. que usa <strong>Rack</strong> para envolver o resolver peticiones HTTP <strong>middleware</strong>.</p>
 
-<h2>El problema</h2>
+<h3>La idea</h3>
 
-<p><img class="center" src="http://dl.dropbox.com/u/27031193/botti.co/captura.png" title="perfomance" ></p>
+<p>Para poner en practica y entender un poco de Sinatra vamos a crear una mini aplicación encargada de almacenar contactos cuyo nombre sera <strong>bcontacts</strong>, los cuales podamos consultar a nivel general o de manera única.</p>
 
-<p>Usualmente se acostumbra a cargar los archivos JavaScript <code>&lt;script&gt;</code> en las cabezeras del documento, <code>&lt;head&gt;</code>esto en cierto sentido no es malo, más sin embargo puede causar un problema a la hora de renderizar nuestra plantilla.</p>
+<p>Que contara con API para consumir estos datos mediante json o xml.</p>
 
-<figure class='code'><figcaption><span>Ficheros js cargados desde head</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
-</span><span class='line'><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en-US&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nt">&lt;head&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;UTF-8&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;title&gt;&lt;/title&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;....&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;....&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;....&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;....&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class='line'><span class="nt">&lt;/head&gt;</span>
-</span><span class='line'><span class="nt">&lt;body&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;/body&gt;</span>
-</span><span class='line'><span class="nt">&lt;/html&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+<h3>Interfaz</h3>
 
+<p><img class="center" src="http://go4.es/0b15"></p>
 
-<h2>Solucion</h2>
+<p>la interfaz me base en algo muy sencillo, pero bonito a mi parecer :3 desarrollado con <strong>sass</strong> y <strong>css3</strong></p>
 
-<p>Los JavaScript <code>&lt;script&gt;</code> que se encuentran en la parte superior de nuestro documento HTML, deberiamos moderlo a la parte inferior de este justo arriba del <code>&lt;/body&gt;</code>para que los script
-sean cargado de ultimos y nuestra plantilla sea renderizado en un mejor tiempo.</p>
+<h3>Estrucutra</h3>
 
-<figure class='code'><figcaption><span>ficheros js cargados al final del documento</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
-</span><span class='line'><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en-US&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nt">&lt;head&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;UTF-8&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;title&gt;&lt;/title&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;/head&gt;</span>
-</span><span class='line'><span class="nt">&lt;body&gt;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;....&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;....&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;....&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;....&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class='line'><span class="nt">&lt;/body&gt;</span>
-</span><span class='line'><span class="nt">&lt;/html&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Otra solucion podria ser el uso de una secunencia de comandos de carga asynchronous, mediante un gestor de scripts como <a href="http://stevesouders.com/controljs/">ControlJS</a>.</p>
-
-<h2>Recursos</h2>
+<p>si bien es cierto sinatra no se guía bajo el patrón MVC pero de la prisa y el desorden no queda nada bueno. así que vamos a manejar cierto orden en nuestro proyecto.</p>
 
 <ul>
-<li><a href="http://google.com/?s=chrome">Chrome DeveloperToolts</a> Sin duda alguna una herramienta indispensable para mi.</li>
-<li><a href="http://www.webpagetest.org/">WebPageTests</a> Genera un reporte de desempeño, con una gran variedad de cosas para jugar</li>
-<li><a href="https://developers.google.com/speed/pagespeed/">Google Page Speed</a> Y Google consintiendonos con una muy buena herramienta, que nos da un reporte y consejos para arreglar los fallos :)</li>
+<li><strong><a href="https://github.com/angelbotto/bcontacts/tree/master/Helpers">Helpers/</a></strong>
+
+<ul>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/Helpers/bchelpers.rb">bchelpers.rb</a></li>
+</ul>
+</li>
+<li><strong><a href="https://github.com/angelbotto/bcontacts/tree/master/Models">Models/</a></strong>
+
+<ul>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/Models/Contact.rb">Contact.rb</a></li>
+</ul>
+</li>
+<li><strong><a href="https://github.com/angelbotto/bcontacts/tree/master/public">public/</a></strong>
+
+<ul>
+<li><strong><a href="https://github.com/angelbotto/bcontacts/tree/master/public/imagen">imagen/</a></strong></li>
+<li><strong><a href="https://github.com/angelbotto/bcontacts/tree/master/public/javascript">javascript/</a></strong>
+
+<ul>
+<li><strong><a href="https://github.com/angelbotto/bcontacts/tree/master/public/javascript/libs">libs/</a></strong></li>
+<li><strong><a href="https://github.com/angelbotto/bcontacts/blob/master/public/javascript/script.js">scripts.js</a></strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong><a href="https://github.com/angelbotto/bcontacts/tree/master/views">Views/</a></strong>
+
+<ul>
+<li> <strong><a href="https://github.com/angelbotto/bcontacts/tree/master/views/css">css/</a></strong>
+
+<ul>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/views/css/_features.scss">_featured.scss</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/views/css/style.scss">style.scss</a></li>
+</ul>
+</li>
+<li> <strong><a href="https://github.com/angelbotto/bcontacts/tree/master/views/layouts">layouts/</a></strong>
+
+<ul>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/views/layouts/index.erb">index.erb</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/views/layouts/about.erb">about.erb</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/views/layouts/api.erb">api.erb</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/views/layouts/coments.erb">coments.erb</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/views/layouts/contacto.erb">contacto.erb</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/views/layouts/edit.erb">edit.erb</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/views/layouts/menu.erb">menu.erb</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/views/layouts/new.erb">new.erb</a></li>
+</ul>
+</li>
+<li> <a href="https://github.com/angelbotto/bcontacts/blob/master/views/layout.erb">layout.erb</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/Api.rb">Api.rb</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/BContacts.rb">BContacts.rb</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/config.ru">config.ru</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/Gemfile">Gemfile</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/README.md">Readme.md</a></li>
 </ul>
 
+
+<h2>Explora, Comenta y Pregunta</h2>
+
+<p>El codigo fuente del proyecto esta alojado en <a href="https://github.com/angelbotto/bcontacts/">github/angelbotto/bcontacts</a>, y el demo esta alojado en <a href="http://bcontacts.botti.co">bcontacts.botti.co</a> la idea de compartir el codigo es que otros lo exploren pregunten, y comenten :).</p>
 </div>
 
 
@@ -213,12 +207,12 @@ sean cargado de ultimos y nuestra plantilla sea renderizado en un mejor tiempo.<
   
 
 
-<time datetime="2012-08-30T13:41:00-05:00" pubdate data-updated="true" itempropr="datePublished">Aug 30<span>th</span>, 2012</time>
+<time datetime="2012-09-17T16:33:00-05:00" pubdate data-updated="true" itempropr="datePublished">Sep 17<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/javascript/'>javascript</a>, <a class='category' href='/blog/categories/perfomance/'>perfomance</a>
+    <a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/sinatra/'>sinatra</a>
   
 </span>
 
@@ -227,7 +221,7 @@ sean cargado de ultimos y nuestra plantilla sea renderizado en un mejor tiempo.<
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://botti.co/blog/perfomance/" data-via="bottico" data-counturl="http://botti.co/blog/perfomance/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://botti.co/blog/conociendo-sinatra/" data-via="bottico" data-counturl="http://botti.co/blog/conociendo-sinatra/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -240,10 +234,8 @@ sean cargado de ultimos y nuestra plantilla sea renderizado en un mejor tiempo.<
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/css-para-placeholder/" title="Previous Post: CSS para Placeholder">&laquo; CSS para Placeholder</a>
+        <a class="basic-alignment left" href="/blog/balotimetro/" title="Previous Post: Balotimetro">&laquo; Balotimetro</a>
       
-      
-        <a class="basic-alignment right" href="/blog/los-proyectos-con-mas-forks-en-github/" title="Next Post: Los proyectos con mas forks en github">Los proyectos con mas forks en github &raquo;</a>
       
     </p>
   </footer>
@@ -330,8 +322,8 @@ sean cargado de ultimos y nuestra plantilla sea renderizado en un mejor tiempo.<
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://botti.co/blog/perfomance/';
-        var disqus_url = 'http://botti.co/blog/perfomance/';
+        var disqus_identifier = 'http://botti.co/blog/conociendo-sinatra/';
+        var disqus_url = 'http://botti.co/blog/conociendo-sinatra/';
         var disqus_script = 'embed.js';
       
     (function () {

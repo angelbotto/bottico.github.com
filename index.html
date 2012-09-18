@@ -20,7 +20,7 @@
   <title>Bottico</title>
   <meta name="author" content="Angel Celis Botto">
   
-  <meta name="description" content="Balotimetro Sep 17th, 2012 | Comentarios Estuve unos días alejado del blog, la razón se debe a que me propuse aprender algo nuevo y realizar un &hellip;">
+  <meta name="description" content="Jugando Con Sinatra Sep 17th, 2012 | Comentarios Sinatra Sinatra es un framework (DSL) de desarrollo para aplicaciones web escrito en Ruby. que usa &hellip;">
   
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
@@ -74,6 +74,126 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title" itemprop="name"><a href="/blog/conociendo-sinatra/" itemprop="url">Jugando Con Sinatra</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-17T16:33:00-05:00" pubdate data-updated="true" itempropr="datePublished">Sep 17<span>th</span>, 2012</time>
+        
+         | <a href="/blog/conociendo-sinatra/#disqus_thread">Comentarios</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content" itemprop="articleBody"><h2>Sinatra</h2>
+
+<p><a href="http://sinatrarb.com">Sinatra</a> es un framework <strong>(DSL)</strong> de desarrollo para aplicaciones web escrito en <strong>Ruby</strong>. que usa <strong>Rack</strong> para envolver o resolver peticiones HTTP <strong>middleware</strong>.</p>
+
+<h3>La idea</h3>
+
+<p>Para poner en practica y entender un poco de Sinatra vamos a crear una mini aplicación encargada de almacenar contactos cuyo nombre sera <strong>bcontacts</strong>, los cuales podamos consultar a nivel general o de manera única.</p>
+
+<p>Que contara con API para consumir estos datos mediante json o xml.</p>
+
+<h3>Interfaz</h3>
+
+<p><img class="center" src="http://go4.es/0b15"></p>
+
+<p>la interfaz me base en algo muy sencillo, pero bonito a mi parecer :3 desarrollado con <strong>sass</strong> y <strong>css3</strong></p>
+
+<h3>Estrucutra</h3>
+
+<p>si bien es cierto sinatra no se guía bajo el patrón MVC pero de la prisa y el desorden no queda nada bueno. así que vamos a manejar cierto orden en nuestro proyecto.</p>
+
+<ul>
+<li><strong><a href="https://github.com/angelbotto/bcontacts/tree/master/Helpers">Helpers/</a></strong>
+
+<ul>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/Helpers/bchelpers.rb">bchelpers.rb</a></li>
+</ul>
+</li>
+<li><strong><a href="https://github.com/angelbotto/bcontacts/tree/master/Models">Models/</a></strong>
+
+<ul>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/Models/Contact.rb">Contact.rb</a></li>
+</ul>
+</li>
+<li><strong><a href="https://github.com/angelbotto/bcontacts/tree/master/public">public/</a></strong>
+
+<ul>
+<li><strong><a href="https://github.com/angelbotto/bcontacts/tree/master/public/imagen">imagen/</a></strong></li>
+<li><strong><a href="https://github.com/angelbotto/bcontacts/tree/master/public/javascript">javascript/</a></strong>
+
+<ul>
+<li><strong><a href="https://github.com/angelbotto/bcontacts/tree/master/public/javascript/libs">libs/</a></strong></li>
+<li><strong><a href="https://github.com/angelbotto/bcontacts/blob/master/public/javascript/script.js">scripts.js</a></strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong><a href="https://github.com/angelbotto/bcontacts/tree/master/views">Views/</a></strong>
+
+<ul>
+<li> <strong><a href="https://github.com/angelbotto/bcontacts/tree/master/views/css">css/</a></strong>
+
+<ul>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/views/css/_features.scss">_featured.scss</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/views/css/style.scss">style.scss</a></li>
+</ul>
+</li>
+<li> <strong><a href="https://github.com/angelbotto/bcontacts/tree/master/views/layouts">layouts/</a></strong>
+
+<ul>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/views/layouts/index.erb">index.erb</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/views/layouts/about.erb">about.erb</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/views/layouts/api.erb">api.erb</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/views/layouts/coments.erb">coments.erb</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/views/layouts/contacto.erb">contacto.erb</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/views/layouts/edit.erb">edit.erb</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/views/layouts/menu.erb">menu.erb</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/views/layouts/new.erb">new.erb</a></li>
+</ul>
+</li>
+<li> <a href="https://github.com/angelbotto/bcontacts/blob/master/views/layout.erb">layout.erb</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/Api.rb">Api.rb</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/BContacts.rb">BContacts.rb</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/config.ru">config.ru</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/Gemfile">Gemfile</a></li>
+<li><a href="https://github.com/angelbotto/bcontacts/blob/master/README.md">Readme.md</a></li>
+</ul>
+
+
+<h2>Explora, Comenta y Pregunta</h2>
+
+<p>El codigo fuente del proyecto esta alojado en <a href="https://github.com/angelbotto/bcontacts/">github/angelbotto/bcontacts</a>, y el demo esta alojado en <a href="http://bcontacts.botti.co">bcontacts.botti.co</a> la idea de compartir el codigo es que otros lo exploren pregunten, y comenten :).</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -470,6 +590,10 @@ sean cargado de ultimos y nuestra plantilla sea renderizado en un mejor tiempo.<
   <ul id="recent_posts">
     
       <li class="post">
+       <time>  17 Sep</time> <a href="/blog/conociendo-sinatra/">Jugando con Sinatra</a>
+      </li>
+    
+      <li class="post">
        <time>  17 Sep</time> <a href="/blog/balotimetro/">Balotimetro</a>
       </li>
     
@@ -485,15 +609,11 @@ sean cargado de ultimos y nuestra plantilla sea renderizado en un mejor tiempo.<
        <time>  30 Aug</time> <a href="/blog/css-para-placeholder/">CSS para Placeholder</a>
       </li>
     
-      <li class="post">
-       <time>  27 Aug</time> <a href="/blog/HolaMundo/">Hola mundo</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categorias</h1>
-    <ul id='categories'><li><em>2</em><a href="/blog/categories/personal">personal</a><span style="width:40%">bar</span><div class="personal"></div></li><li><em>1</em><a href="/blog/categories/perfomance">perfomance</a><span style="width:20%">bar</span><div class="perfomance"></div></li><li><em>1</em><a href="/blog/categories/infografia">infografia</a><span style="width:20%">bar</span><div class="infografia"></div></li><li><em>1</em><a href="/blog/categories/ruby">ruby</a><span style="width:20%">bar</span><div class="ruby"></div></li><li><em>1</em><a href="/blog/categories/javascript">javascript</a><span style="width:20%">bar</span><div class="javascript"></div></li><li><em>1</em><a href="/blog/categories/sass">sass</a><span style="width:20%">bar</span><div class="sass"></div></li><li><em>1</em><a href="/blog/categories/css">css</a><span style="width:20%">bar</span><div class="css"></div></li><li><em>1</em><a href="/blog/categories/sinatra">sinatra</a><span style="width:20%">bar</span><div class="sinatra"></div></li></ul>
+    <ul id='categories'><li><em>2</em><a href="/blog/categories/sinatra">sinatra</a><span style="width:33%">bar</span><div class="sinatra"></div></li><li><em>2</em><a href="/blog/categories/ruby">ruby</a><span style="width:33%">bar</span><div class="ruby"></div></li><li><em>2</em><a href="/blog/categories/personal">personal</a><span style="width:33%">bar</span><div class="personal"></div></li><li><em>1</em><a href="/blog/categories/infografia">infografia</a><span style="width:16%">bar</span><div class="infografia"></div></li><li><em>1</em><a href="/blog/categories/javascript">javascript</a><span style="width:16%">bar</span><div class="javascript"></div></li><li><em>1</em><a href="/blog/categories/sass">sass</a><span style="width:16%">bar</span><div class="sass"></div></li><li><em>1</em><a href="/blog/categories/css">css</a><span style="width:16%">bar</span><div class="css"></div></li><li><em>1</em><a href="/blog/categories/perfomance">perfomance</a><span style="width:16%">bar</span><div class="perfomance"></div></li></ul>
 </section>
 
 <section>
