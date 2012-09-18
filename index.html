@@ -20,7 +20,7 @@
   <title>Bottico</title>
   <meta name="author" content="Angel Celis Botto">
   
-  <meta name="description" content="Jugando Con Sinatra Sep 17th, 2012 | Comentarios Sinatra Sinatra es un framework (DSL) de desarrollo para aplicaciones web escrito en Ruby. que usa &hellip;">
+  <meta name="description" content="Redirección 301, Paginas Sin WWWW - Sinatra Sep 18th, 2012 | Comentarios Segun tengo entendido, tener accesso habilitado mediante www o sin ella, &hellip;">
   
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
@@ -74,6 +74,59 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title" itemprop="name"><a href="/blog/redireccion-301/" itemprop="url">Redirección 301, Paginas Sin WWWW - Sinatra</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-18T04:26:00-05:00" pubdate data-updated="true" itempropr="datePublished">Sep 18<span>th</span>, 2012</time>
+        
+         | <a href="/blog/redireccion-301/#disqus_thread">Comentarios</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content" itemprop="articleBody"><p>Segun tengo entendido, tener accesso habilitado mediante www o sin ella, afecta el posicionamiento de esta en los buscadores (Mal SEO), ya que lo detecta como contenido duplicado.</p>
+
+<p>Cree un snippet que depronto les puede ser util, para redireccionar de midominio.com a www.midominio.com.</p>
+
+<figure class='code'><figcaption><span>sinatrapp.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">before</span> <span class="k">do</span>
+</span><span class='line'>      <span class="n">redirect</span> <span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sr">/www\./</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="mi">301</span> <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">host</span> <span class="o">=~</span> <span class="sr">/^www/</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Conclución</h3>
+
+<p>No es relevante usar con o sin wwww lo importante, es definir una de estas para una buena optimizacion de nuestro sitio.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -590,6 +643,10 @@ sean cargado de ultimos y nuestra plantilla sea renderizado en un mejor tiempo.<
   <ul id="recent_posts">
     
       <li class="post">
+       <time>  18 Sep</time> <a href="/blog/redireccion-301/">Redirección 301, Paginas sin WWWW - Sinatra</a>
+      </li>
+    
+      <li class="post">
        <time>  17 Sep</time> <a href="/blog/conociendo-sinatra/">Jugando con Sinatra</a>
       </li>
     
@@ -605,15 +662,11 @@ sean cargado de ultimos y nuestra plantilla sea renderizado en un mejor tiempo.<
        <time>  30 Aug</time> <a href="/blog/perfomance/">JavaScript blocks rendering</a>
       </li>
     
-      <li class="post">
-       <time>  30 Aug</time> <a href="/blog/css-para-placeholder/">CSS para Placeholder</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>Categorias</h1>
-    <ul id='categories'><li><em>2</em><a href="/blog/categories/sinatra">sinatra</a><span style="width:33%">bar</span><div class="sinatra"></div></li><li><em>2</em><a href="/blog/categories/ruby">ruby</a><span style="width:33%">bar</span><div class="ruby"></div></li><li><em>2</em><a href="/blog/categories/personal">personal</a><span style="width:33%">bar</span><div class="personal"></div></li><li><em>1</em><a href="/blog/categories/infografia">infografia</a><span style="width:16%">bar</span><div class="infografia"></div></li><li><em>1</em><a href="/blog/categories/javascript">javascript</a><span style="width:16%">bar</span><div class="javascript"></div></li><li><em>1</em><a href="/blog/categories/sass">sass</a><span style="width:16%">bar</span><div class="sass"></div></li><li><em>1</em><a href="/blog/categories/css">css</a><span style="width:16%">bar</span><div class="css"></div></li><li><em>1</em><a href="/blog/categories/perfomance">perfomance</a><span style="width:16%">bar</span><div class="perfomance"></div></li></ul>
+    <ul id='categories'><li><em>3</em><a href="/blog/categories/ruby">ruby</a><span style="width:42%">bar</span><div class="ruby"></div></li><li><em>3</em><a href="/blog/categories/sinatra">sinatra</a><span style="width:42%">bar</span><div class="sinatra"></div></li><li><em>2</em><a href="/blog/categories/personal">personal</a><span style="width:28%">bar</span><div class="personal"></div></li><li><em>1</em><a href="/blog/categories/perfomance">perfomance</a><span style="width:14%">bar</span><div class="perfomance"></div></li><li><em>1</em><a href="/blog/categories/infografia">infografia</a><span style="width:14%">bar</span><div class="infografia"></div></li><li><em>1</em><a href="/blog/categories/javascript">javascript</a><span style="width:14%">bar</span><div class="javascript"></div></li><li><em>1</em><a href="/blog/categories/sass">sass</a><span style="width:14%">bar</span><div class="sass"></div></li><li><em>1</em><a href="/blog/categories/css">css</a><span style="width:14%">bar</span><div class="css"></div></li><li><em>1</em><a href="/blog/categories/seo">seo</a><span style="width:14%">bar</span><div class="seo"></div></li></ul>
 </section>
 
 <section>

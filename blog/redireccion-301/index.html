@@ -17,18 +17,18 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Hola mundo - Bottico</title>
+  <title>Redirección 301, Paginas sin WWWW - Sinatra - Bottico</title>
   <meta name="author" content="Angel Celis Botto">
   
-  <meta name="description" content="Hola Mundo Aug 27th, 2012 | Comentarios Hace varios años ya, cree mi primer Blog llamado El blog de legna Un blog personal, que practicamente era un &hellip;">
-  <meta name="keywords" content="holamundo hola mundo bottico blog">
+  <meta name="description" content="Redirección 301, Paginas Sin WWWW - Sinatra Sep 18th, 2012 | Comentarios Segun tengo entendido, tener accesso habilitado mediante www o sin ella, &hellip;">
+  <meta name="keywords" content="ruby sinatra seo angelbotto bottico botti.co">
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="google-site-verification" content="aWsVi9MPQPfLZUKYOLIdnlVX9kMAnow13p6KpgktOqs" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="cache-control" content="no-cache">
   
-  <link rel="canonical" href="http://botti.co/blog/HolaMundo/">
+  <link rel="canonical" href="http://botti.co/blog/redireccion-301/">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/Bottico" rel="alternate" title="Bottico" type="application/atom+xml">
@@ -77,7 +77,7 @@
   
   <header>
     
-      <h1 class="entry-title" itemprop="name">Hola Mundo</h1>
+      <h1 class="entry-title" itemprop="name">Redirección 301, Paginas Sin WWWW - Sinatra</h1>
     
     
       <p class="meta">
@@ -93,7 +93,7 @@
   
 
 
-<time datetime="2012-08-27T17:16:00-05:00" pubdate data-updated="true" itempropr="datePublished">Aug 27<span>th</span>, 2012</time>
+<time datetime="2012-09-18T04:26:00-05:00" pubdate data-updated="true" itempropr="datePublished">Sep 18<span>th</span>, 2012</time>
         
          | <a href="#disqus_thread">Comentarios</a>
         
@@ -102,24 +102,22 @@
   </header>
 
 
-<div class="entry-content" itemprop="articleBody"><p>Hace varios años ya, cree mi primer Blog llamado <strong>El blog de legna</strong> Un blog personal, que practicamente era un copy paste de otros blogs, desarrollado en <strong>cute news</strong> y a punta de tablas xD, que por motivos personales no pude continuar.</p>
+<div class="entry-content" itemprop="articleBody"><p>Segun tengo entendido, tener accesso habilitado mediante www o sin ella, afecta el posicionamiento de esta en los buscadores (Mal SEO), ya que lo detecta como contenido duplicado.</p>
 
-<figure class='code'><figcaption><span>El que entendio entendio</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'> <span class="nb">puts</span> <span class="vi">@dinero</span> <span class="o">*</span> <span class="mi">0</span>
+<p>Cree un snippet que depronto les puede ser util, para redireccionar de midominio.com a www.midominio.com.</p>
+
+<figure class='code'><figcaption><span>sinatrapp.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">before</span> <span class="k">do</span>
+</span><span class='line'>      <span class="n">redirect</span> <span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sr">/www\./</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="mi">301</span> <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">host</span> <span class="o">=~</span> <span class="sr">/^www/</span>
+</span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Si bien he estado utilizando el internet para aprender y conocer mucho, yo realmente nunca tuve tiempo para esto.</p>
+<h3>Conclución</h3>
 
-<p>Cuando cree angelbotto.net decidí, escribir una especie de libroTutorial, para enseñar y aprender el lenguaje PHP que por motivos de tiempo tuve que suspender y cerrar.</p>
-
-<p>Realmente esta fue una experiencia muy interesante y enriquecedora, No pensé que me llegase a gustar tanto escribir. Me gusto también la fase de preparación previa, la investigación y la recopilación de la información que se necesitaba para el articulo. y pues ni de que hablar de conseguir uno que otro comentario, donde te das cuenta que un blog no es para enseñar sino para aprender.</p>
-
-<p>A principios de este año, junto con <a href="http://twitter.com/jhonecg">@jhonecg</a> charlábamos sobre proyectos que nos gustaría desarrollar, uno de los puntos en la lista era crear un blog personal, crearlo y mantenerlo por un buuuen tiempo.</p>
-
-<p>Así que, aquí estoy a finales de agosto, inaugurando mi nuevo Blog <a href="http://botti.co">http://botti.co</a>, Donde escribiré y compartiré toda clase de cosas relacionados con el mundo del desarrollo web, móvil y general :).</p>
-
-<p>No faltando nada mas, bienvenidos a mi blog, espero que lo disfruten.</p>
+<p>No es relevante usar con o sin wwww lo importante, es definir una de estas para una buena optimizacion de nuestro sitio.</p>
 </div>
 
 
@@ -142,12 +140,12 @@
   
 
 
-<time datetime="2012-08-27T17:16:00-05:00" pubdate data-updated="true" itempropr="datePublished">Aug 27<span>th</span>, 2012</time>
+<time datetime="2012-09-18T04:26:00-05:00" pubdate data-updated="true" itempropr="datePublished">Sep 18<span>th</span>, 2012</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/personal/'>personal</a>
+    <a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/seo/'>seo</a>, <a class='category' href='/blog/categories/sinatra/'>sinatra</a>
   
 </span>
 
@@ -156,7 +154,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://botti.co/blog/HolaMundo/" data-via="bottico" data-counturl="http://botti.co/blog/HolaMundo/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://botti.co/blog/redireccion-301/" data-via="bottico" data-counturl="http://botti.co/blog/redireccion-301/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -169,8 +167,8 @@
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/conociendo-sinatra/" title="Previous Post: Jugando con Sinatra">&laquo; Jugando con Sinatra</a>
       
-        <a class="basic-alignment right" href="/blog/css-para-placeholder/" title="Next Post: CSS para Placeholder">CSS para Placeholder &raquo;</a>
       
     </p>
   </footer>
@@ -257,8 +255,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://botti.co/blog/HolaMundo/';
-        var disqus_url = 'http://botti.co/blog/HolaMundo/';
+        var disqus_identifier = 'http://botti.co/blog/redireccion-301/';
+        var disqus_url = 'http://botti.co/blog/redireccion-301/';
         var disqus_script = 'embed.js';
       
     (function () {
